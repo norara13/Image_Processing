@@ -1,5 +1,4 @@
 # 与えられたグレースケール化された画像を二値画像に変換するプログラム
-import numpy as np
 
 def Binary(gray) :
     # result = [0 if i < 128 else 1 for i in gray]

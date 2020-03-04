@@ -1,3 +1,3 @@
 # 大津の2値化
-
-# いったん飛ばす
+import cv2
+import numpy as np

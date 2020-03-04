@@ -1,12 +1,18 @@
 # グレースケール化してから二値化
-from MyPackages.Binary import Binary
-from MyPackages.rgb_to_gray import rgb_to_gray
 import cv2
+import numpy as np
 
 img = cv2.imread("source/imori.jpg")
 
-gray = rgb_to_gray(img)
+b = img[:, :, 0]
+g = img[:, :, 1] 
+r = img[:, :, 2]
 
-bi = Binary(gray)
+gray = np.array(0.2126*r + 0.7152*g + 0.0722*b, dtype='uint8')
 
-cv2.imwrite("answer/answer_Q3.jpg", bi)
+t = 128
+binary = gray.copy()
+binary[gray < t] = 0
+binary[gray >= t] = 255
+
+cv2.imwrite("answer/answer_Q3.jpg", binary)
